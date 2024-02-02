@@ -12,13 +12,6 @@
 #execute your function with an argument of 48, it will return
 #the sum of the sequence above.
 
-#######
-for (k in 0:49) {
-  print((1/2)^(2*k+1))
-  
-}
-#######
-
 finite_sum <- 0
 
 for (i in seq(1, 99, by = 2)) {
@@ -26,17 +19,6 @@ for (i in seq(1, 99, by = 2)) {
 }
 cat("Finite sequence sum:", finite_sum, "\n")
 
-
-######
-Series=function(N) {
-  k=0
-  while(N > k){
-    print((1/2)^(2*k+1))
-    k=k+1
-  }
-  return(k)
-}
-######
   
 calculate_sequence <- function(K) {
   finite_sum <- 0
@@ -70,15 +52,6 @@ Die=function() {
    return(rolls)
 }
 
-####
-rolls=c()
-for(num in 1:3000) {
-  rolls=c(rolls,Die())
-}
-
-mean(rolls)
-####
-
 N <- 3000
 total_rolls <- 0
 
@@ -102,13 +75,6 @@ cat("Average number of rolls to exceed 100:", average, "\n")
 # whether floor(N/10^k) is 0 for increasing values of 
 # the integer k. Once it catches the 0, k will be the 
 # answer.
-
-digitcount <- function (N) {
-  define_k
-  insert_awesome_code_here
-  return(k)
-}
-
 
 digcount=function(N) {
   k=0
