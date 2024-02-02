@@ -1,1 +1,1 @@
-# IUPUI
+# College
