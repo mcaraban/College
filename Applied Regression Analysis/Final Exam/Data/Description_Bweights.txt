@@ -1,0 +1,21 @@
+These are the variables (out of many others) that are included in the data set Bweights.csv
+
+ $ bgender : baby's gender (male = 1, female = 2) 
+ $ bhead   : baby's head circumference at birth (centimeters)
+ $ blength : baby's length at birth (centimeteres)
+ $ bwt     : baby's birth weight (grams) 
+ $ delwt   : mother's weight at delivery (pounds) .
+ $ gaweek  : gestational age in weeks
+ $ fincome : family monthly income (in hundreds, rounded)
+ $ frace   : father's race (1= White, 2 = Black, 3 = Asian, 4 = Puerto Rican, 8 = Other, 9 = Unknown)
+ $ mrace   : mother's race (1= White, 2 = Black, 3 = Asian, 4 = Puerto Rican, 8 = Other)
+ $ malform : presence of malformations that could a???ect weight (0 = absent, 1 = present)
+ $ menarche: mother’s age at menarche (years)
+ $ mheight : mother's height (inches)
+ $ momage  : mother's age at delivery (years) 
+ $ parity  : number of live births prior to this pregnancy
+ $ ppbmi   : mother's pre-pregnancy BMI 
+ $ ppwt    : mother's pre-pregnancy weight (pounds) ..
+ $ evrsmok : mother's ever smoking indicator (1= yes, 0=no)
+ $ smoken  : naverage number of cigarettes smoked per day during pregnancy 
+ $ wtgain  : mother's weight gain during pregnancy (pounds)
