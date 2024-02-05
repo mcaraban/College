@@ -67,33 +67,6 @@ Pairs_Dataset = Child_Mortality_2015 %>%
 Pairs_Dataset %>%
   select("Sri Lanka", "Turkey", "Poland", "South Korea", "Malaysia", "Russia", "Pakistan", "Vietnam", "Thailand", "South Africa")
 
-
-#5
-# Specify the country pairs
-country_pairs <- list(
-  c("Sri Lanka", "Turkey"),
-  c("Poland", "South Korea"),
-  c("Malaysia", "Russia"),
-  c("Pakistan", "Vietnam"),
-  c("Thailand", "South Africa")
-)
-
-# Randomly select one country from each pair
-all_countries <- sample(unlist(country_pairs))
-# Flatten the list to get a vector of selected countries
-selected_countries <- all_countries[seq(1, length(all_countries), by = 2)]
-
-# Filter final_tidy_dataset for the randomly selected countries in the year 2015
-child_mortality_2015 <- Dataset %>%
-  filter(Year == 2015 & (tolower(Country) %in% tolower(selected_countries)))
-
-# Create a data frame with randomly selected countries and child mortality rates
-result_df <- child_mortality_2015 %>%
-  select(Country, ChildrenMortality) %>%
-  spread(Country, ChildrenMortality)
-
-result_df
-
 #6
 Plot_Data <- Dataset %>%
   filter(Year == 1962) %>%
