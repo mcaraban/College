@@ -1,0 +1,141 @@
+/<h<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Final Project</title>
+  <h1>Cars (MPG in different areas)</h1>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <style>
+
+  h1 {
+  text-align: center;
+  }
+
+  body {
+  	font: 12px arial;
+  }
+
+  	.axis path,
+  	.axis line {
+  		fill: none;
+  		stroke: black;
+  		shape-rendering: crispEdges;
+  	}
+
+  	.dot {
+  		stroke: black;
+  	}
+    .bar {
+      fill: steelblue;
+    }
+    .axis {
+      font: 10px sans-serif;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+  </style>
+</head>
+<body>
+  <svg id="chart"></svg>
+  <script>
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var xbar = d3.scale.ordinal()
+        .rangeRoundBands([0, width], .1);
+
+    var ybar = d3.scale.linear()
+        .domain([0, d3.max("cars.csv", function(d) {return d.value; })])
+        .range([height, 0]);
+
+    var xbarAxis = d3.svg.axis()
+        .scale(xbar)
+        .orient("bottom");
+
+    var ybarAxis = d3.svg.axis()
+        .scale(ybar)
+        .orient("left")
+        .ticks(10);
+
+
+    var svg = d3.select("#chart")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv("cars.csv", function(error, data) {
+      if (error) throw error;
+      var mpgByBrand = d3.nest()
+        .key(function(d) { return d.brand; })
+        .rollup(function(v) { return d3.mean(v, function(d) { return +d.mpg; }); })
+        .entries(data);
+
+      xbar.domain(mpgByBrand.map(function(d) { return d.key; }));
+      ybar.domain([0, d3.max(mpgByBrand, function(d) { return d.values; })]);
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xbarAxis)
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .call(ybarAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("MPG");
+
+          svg.selectAll(".bar")
+            .data(mpgByBrand)
+            .enter().append("rect")
+              .attr("class", "bar")
+              .attr("x", function(d) { return xbar(d.key); })
+              .attr("width", xbar.rangeBand())
+              .attr("y", function(d) { return ybar(d.values); })
+              .attr("height", function(d) { return height - ybar(d.values); })
+              .attr("fill", function(d, i) { return "hsl(" + (i * 30) + ", 50%, 50%)"; })
+              .on("mouseover", mouseover)
+              .on("mousemove", mousemove)
+              .on("mouseleave", mouseleave);
+
+          var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+          function mouseover(d) {
+            var html = "<b>" + d.values + "</b> mpg, <b/>" + d.key + "</b>  <b/>";
+
+            tooltip.html(html)
+              .style("left", (d3.event.pageX + 15) + "px")
+              .style("top", (d3.event.pageY - 28) + "px")
+              .transition()
+              .duration(300)
+              .style("opacity", 1);
+          }
+
+          function mousemove(d) {
+            tooltip
+              .style("left", (d3.event.pageX + 15) + "px")
+              .style("top", (d3.event.pageY - 28) + "px");
+          }
+
+          function mouseleave(d) {
+            tooltip.transition()
+              .duration(100)
+              .style("opacity", 0);
+          }
+
+    });
+  </script>
+</body>
+</html>
