@@ -1,0 +1,16 @@
+function z = Language_Competition(t,u)
+
+a_x=.7;
+a_y=.8;
+c=3;
+S_x=
+S_y=
+
+z1= c.*u(1).*u(2)+a_x.*u(1).*(1-(u(1)./S_x));
+z2=-c.*u(1).*u(2)+a_y.*u(2).*(1-(u(2)./S_y));
+z=[z1;z2];
+
+
+
+
+
