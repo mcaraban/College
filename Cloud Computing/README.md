@@ -1,4 +1,4 @@
-# INFO-I 416 - Cloud Computing for Data Science, Spring 2023
+# INFO-I 416 – Cloud Computing for Data Science, Spring 2023
 
 ## Descriptions
 This course covers data science concepts, techniques, and tools to support big data analytics, including cloud computing, parallel algorithms, nonrelational databases, and high-level language support. The course applies the MapReduce programming model and virtual-machine utility computing environments to data-driven discovery and scalable data processing for scientific applications.
