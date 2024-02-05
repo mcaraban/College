@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project 1 - sample code 2</title>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<style>
+		body {
+			font-family: Arial;
+			font-size: 20px;
+
+		}
+    	text { 
+			font-family: Arial; 
+			font-size: 17px;
+		}
+
+		.axis path, .axis line {
+			fill: none;
+			stroke: black;
+			shape-rendering: crispEdges;
+		}
+		.tick text {
+			fill: black;
+			font-size: 13px;
+		}
+
+		rect {
+			stroke: white;
+		}
+
+		circle {
+			fill: #dfb8ff;
+		}
+	</style>
+</head>
+<body>
+
+	<p>Brushing and Linking</p>
+	<svg id="main" width="650" height="600">
+	</svg>
+
+	
+	<script>
+
+		var CHART_SIZE = 250;
+
+		// create an empty array
+		var N = 50;
+		var dataset = [];
+
+		// create a semi-random dataset
+		for (var i=1; i<=N; i++) 
+		{
+			// X increases monotonically with i
+			var x = (i/N)*100;
+
+			// Y follows a gaussian distribution with some random perturbation
+			var y = 4+800*(1 / (8*Math.sqrt(2*Math.PI))) * Math.pow(2.71, -0.5 * Math.pow((x-30) / 8, 2));
+			y+= (Math.random()-.5) * 5;
+
+			// Z and W are selected at random
+			var z = (i/N)*100; // Math.random() * 50;
+			var w = 4+800*(1 / (8*Math.sqrt(2*Math.PI))) * Math.pow(2.71, -0.5 * Math.pow((x-30) / 8, 2));
+			w+= (Math.random()-.5) * 5;
+
+			//Math.random() * 50;
+
+			// create one observation
+			var observation = {
+				id: i,
+				x: x,
+				y: y,
+				z: z,
+				w: w,
+			};
+
+			// add to dataset
+			dataset.push(observation);
+		}
+
+		var svg = d3.select("svg");
+
+		// create scales for X, Y, Z, and W
+		var xScale = d3.scale.linear()
+			.domain([0, d3.max(dataset, function(d) { return d.x })]).range([0, CHART_SIZE]);
+		var yScale = d3.scale.linear()
+			.domain([0, d3.max(dataset, function(d) { return d.y })]).range([CHART_SIZE, 0]);
+		var zScale = d3.scale.linear()
+			.domain([0, d3.max(dataset, function(d) { return d.z })]).range([0, CHART_SIZE]);
+		var wScale = d3.scale.linear()
+			.domain([0, d3.max(dataset, function(d) { return d.w })]).range([CHART_SIZE, 0]);
+
+		// scatterplot on left
+		// ====================
+		var gLeft = svg.append('g')
+			.attr('transform', 'translate(50,30)')
+		gLeft.selectAll('circle')
+			.data(dataset)
+			.enter().append('circle')
+			.attr('r', '5px')
+			.attr('cx', function(d) { return xScale(d.x)})
+			.attr('cy', function(d) { return yScale(d.y)})
+			.attr('id', function(d) { return 'left_' + d.id; } );
+		
+		
+		// Add interaction events
+		// ======================
+		gLeft.selectAll('circle')
+			.on('mouseover', function(d) 
+			{
+				d3.select("#left_" + d.id)
+					.style('fill', 'red')
+					.attr('r', '10px')
+
+				d3.select("#right_" + d.id)
+					.style('fill', 'red')
+					.attr('r', '10px');
+
+				// move brushed circle so that it's on top
+				this.parentNode.appendChild(this);
+
+			})
+
+			.on('mouseout', function(d) {
+				d3.select("#left_" + d.id)
+					.style('fill', null)
+					.attr('r', '6px');
+
+				d3.select("#right_" + d.id)
+					.style('fill', null)
+					.attr('r', '6px');
+
+
+			})
+			
+
+		// create bottom/left axes
+		gLeft.append('g')
+			.attr('class', 'axis')
+			.attr('transform', 'translate(0,' + CHART_SIZE + ')')
+			.call(d3.svg.axis().scale(xScale).orient('bottom'))
+
+		gLeft.append('g')
+			.attr('class', 'axis')
+			.call(d3.svg.axis().scale(yScale).orient('left'))
+
+		// add labels to the axes
+		gLeft.append('text')
+			.attr('transform', 'translate(' + (CHART_SIZE/2) + ',' + (CHART_SIZE+40) + ')')
+			.attr('text-anchor', 'middle')
+			.style('font-weight', 'bold')
+			.html('X');
+
+		gLeft.append('text')
+			.attr('transform', 'translate(' + (-40) + ',' + (CHART_SIZE/2) + ')')
+			.attr('text-anchor', 'middle')
+			.style('font-weight', 'bold')
+			.html('Y');
+
+		
+		// scatterplot on right
+		// ====================
+		var gRight = svg.append('g')
+			.attr('transform', 'translate(370,30)')
+		gRight.selectAll('circle')
+			.data(dataset)
+			.enter().append('circle')
+			.attr('r', '5px')
+			.attr('cx', function(d) { return zScale(d.z)})
+			.attr('cy', function(d) { return wScale(d.w)})
+			.attr('id', function(d) { return "right_" + d.id;})
+			
+		gRight.append('g')
+			.attr('class', 'axis')
+			.attr('transform', 'translate(0,' + CHART_SIZE + ')')
+			.call(d3.svg.axis().scale(zScale).orient('bottom'))
+
+		gRight.append('g')
+			.attr('class', 'axis')
+			.call(d3.svg.axis().scale(wScale).orient('left'))
+		
+		gRight.append('text')
+			.attr('transform', 'translate(' + (CHART_SIZE/2) + ',' + (CHART_SIZE+40) + ')')
+			.attr('text-anchor', 'middle')
+			.style('font-weight', 'bold')
+			.html('Z');
+
+		gRight.append('text')
+			.attr('transform', 'translate(' + (-40) + ',' + (CHART_SIZE/2) + ')')
+			.attr('text-anchor', 'middle')
+			.style('font-weight', 'bold')
+			.html('W');
+
+	</script>
+</body>
+
+
+</html>
