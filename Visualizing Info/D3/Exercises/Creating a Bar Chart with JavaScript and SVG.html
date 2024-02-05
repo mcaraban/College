@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+Pets numbers from a neighborhood survey:<br>
+
+<svg width="400" height="200">
+  
+    <rect id="bar1" x="50" y="50" width="30" height="100" style="fill: steelblue"/>
+    <rect id="bar2" x="112" y="50" width="30" height="100" style="fill: steelblue"/>
+    <rect id="bar3" x="174" y="50" width="30" height="100" style="fill: steelblue"/>
+
+    <text x="50" y="145">cats</text>
+    <text x="112" y="145">dogs</text>
+    <text x="174" y="145">iguanas</text>
+
+
+  	<line x1="40" x2="220" y1="130" y2="130" stroke="black"/>
+  	<line x1="40" x2="40" y1="0" y2="150" stroke="black"/>
+
+</svg>
+  
+  <script type="text/javascript">
+    
+    var CHART_HEIGHT = 130;
+    
+    var pets = [20, 50, 102];
+    
+    for (var i=0; i<pets.length; i++) 
+    {
+    
+      	var bar = document.getElementById("bar" + (i+1));
+
+      	bar.setAttribute('height', (pets[i] / 102) * CHART_HEIGHT);
+        bar.setAttribute('y',   (1-(pets[i] / 102)) * CHART_HEIGHT);
+
+    }
+  </script>
+  
+</body>
+</html>
