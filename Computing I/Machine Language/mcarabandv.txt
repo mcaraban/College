@@ -1,0 +1,15 @@
+begin:	lod quotient
+	inc
+	sto quotient
+
+	lod dividend
+	sub divisor
+	sto dividend
+
+	jmz quit
+	jmp begin 
+
+	quit:hlt
+	quotient:0
+	dividend:
+	divisor:

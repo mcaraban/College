@@ -1,0 +1,13 @@
+begin: lod prod
+	add adder
+	sto prod
+	lod ctr
+	dec
+	sto ctr
+	jmz quit
+	jmp begin 
+
+	quit:hlt
+	prod:0
+	ctr:
+	adder:

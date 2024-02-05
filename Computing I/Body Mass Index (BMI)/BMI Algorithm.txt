@@ -1,0 +1,31 @@
+Overview:
+Create a graphic user interface in Python using HTML and CSS. Create a simple web server with Bottle. Build a web application which prompts
+the user for his or her height and weight, sends that data to another page, which calculates the BMI as well as some feedback based off the 
+matching status.
+
+Input:
+The inputs for this program will be the height and weight. The information will get imported from another page where it is initially asked. 
+It will be changed into floating type to include decimal places and rounded to two places.
+
+Output:
+The program will produce a users BMI from the given height and weight. Based off the BMI calculated, it will also produce a users status.
+A successful status will successfully produce these calculations and results. Something going wrong can come in the form of incorrectly calculating 
+the BMI. Other examples would be the BMI being calculated correctly but not providing the correct status.
+
+Procedure:
+Create a variable called feet with value imported from bottle
+Create a variable called inches with value imported from bottle
+Create a variable called pounds with value imported from bottle
+Create a variable called height with value of float converted feet variable times twelve plus float converted inches variable
+Convert pounds to float type
+Create a variable called BMI with value of the BMI formula with out data
+Round BMI variable to two decimals
+If BMI is less than or equal to 18.5,
+Create a variable called Status with value underweight
+If BMI is less than or equal to 24.9,
+Create a variable called Status with value normal
+If BMI is less than or equal to 29.9,
+Create a variable called Status with value overweight
+Else
+Create a variable called Status with value obese 
+	

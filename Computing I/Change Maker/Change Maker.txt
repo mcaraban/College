@@ -1,0 +1,94 @@
+Change Maker
+
+
+
+Objectives
+Create a program that calculates change after a purchase. This will be a sequential algorithm, which is one of the simplest programming patterns. Your solution requires no branching or looping. Simply write a series of statements that will execute in order.
+
+
+Discussion
+The program should ask for a purchase price and the amount of cash tendered. It should then determine how many coins or bills of the following denominations should be returned:
+
+penny
+$0.01
+nickel
+$0.05
+dime
+$0.10
+quarter
+$0.25
+dollar
+$1.00
+five
+$5.00
+ten
+$10.00
+twenty
+$20.00
+
+
+Sample Run
+Price of the item:
+21.37
+Cash tendered:
+50.00
+Change: 28.63
+Change Left: 2863
+twenties: 1
+tens: 0
+fives: 1
+ones: 3
+quarters: 2
+dimes: 1
+nickles: 0
+pennies: 3
+
+Notes
+This program is easier if you consider the following ideas:
+
+You'll have to figure out how much of each amount is required
+You'll need to know what's left after you've accounted for each denomination
+Look up the modulus operator
+Modulus works better with integers
+It may be better to work in pennies rather than dollars
+
+
+Algorithm
+
+Please add a text file explaining the algorithm for your project.  An algorithm is a plain-text document that explains in English what you are trying to accomplish.  It will normally have four main components:
+
+Overview - What is the basic goal that you're trying to achieve.  This should be a paragraph in English designed to be readable by a non-technical person, but still specific enough to give you some kind of starting place.
+
+Input - What information will come into the program?  How will it get there? what type of data will it be?  Will it need to be changed or sanitized in some way?
+
+Output -  What will the program produce?  What will a successful run look like?  What will it look like if something goes wrong
+
+Procedure - Re-write the overview in a list of very specific steps.  It's still mainly English, but the goal is to have each step so specific that it can be readily translated into a line or two of Python code.
+
+
+
+Black Belt
+There are many ways to extend this. Think about turning it into a vending machine with an inventory, objects with different prices, and different kinds of coin or bill inputs. Or think about the data structure. If you know something about arrays, you might be able to improve this program so it runs cleanly in a loop and you don't have to write the same code over and over. You might also convert a value to another currency and return the appropriate bills and coins in that currency.
+
+As always, be certain to do the main program before adding a black belt version, and turn them in as separate files.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

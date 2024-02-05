@@ -1,0 +1,38 @@
+Overview:
+The game begins with the computer generating a random integer between 1 and 100.
+The user will guess a number, and the computer will indicate whether the guess
+is too high, too low, or correct. This will continue until the user has correctly
+guessed the computer's number.
+
+Input:
+Input would include each time a number guess is performed. In this game, the input 
+will need to be an integer. The input will be retreived by asking the user for a number 
+multiple times.
+
+Output:
+The program will produce a random integer from 1 to 100. Once the input is taken, the 
+program will produce an answer of too high, too low, or correct depening on the input 
+compared to the random integer. The program will also produce the amound of tries it 
+took to achieve the correct number. A successful run will allow the user to correctly 
+guess the number. Unsuccessful runs would end in the user not being able to guess the
+number or an endless loop.
+
+Procedue:
+Print the instructions of the game (I'm thinking of a number between 1 and 100 
+Guess a number, and I'll tell you if you're too high, too low, or got it right.
+Good luck!)
+Generate a random integer from 1 to 100 and store it into GeneratedNumber
+Create variable named Tries  with initial value of 0
+Initialize sentry with variable named KeepGoing as true then continue loop as long as condition is true. 
+Inside loop, change sentry KeepGoing with False after Guess variable 
+equals GeneratedNumber.
+Code that is repeated is the following,
+Add an integer to Tries everytime loop is ran and store it in Tries
+Ask the user "Please enter an integer:" and store in Guess
+Convert Guess variable to integer and store in Guess
+If Guess is larger than GeneratedNumber then print "Too High"
+If Guess is smaller than GeneratedNumber then print "Too Low"
+If Guess equals GeneratedNumber then print "Correct" with amount of Tries
+
+
+ 

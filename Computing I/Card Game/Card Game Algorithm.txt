@@ -1,0 +1,53 @@
+Overview:
+The objective of this lab is to create the beginnings for a python-based card game.A fully functioning card game is not expected. What is expected is to create 
+a main function and various functions that will  accomplish certain goals. The functions should keep track of the location of every card. All cards will start
+in the deck. Translate intergers to suits, ranks and player names. Write a function to assign a card to a given player. Write a function that displays the location 
+of every card. Write a function that prints the name of every card in a given hand
+
+Input:
+No inputs?
+
+Output:
+The program will produce location of all the cards, whether in the deck,player or computer. It will also display/produce the five cards the player and computer have 
+been dealt. A successful run will be able to display all of the latter. If something goes wrong, it could be in the form of not showing all the cards a player and/or
+a computer has, repeating cards, or cards not being dealt.
+
+Procedure:
+Create a function called clearDeck() with no parameters 
+Begin with sentry(cardNum) at 0 and add 1 to sentry on each pass until sentry is equal to 51 
+(code to repeat)
+Assign card to deck
+
+Create a function called showDeck() with no parameters
+output the text " Location of all cards    #     card    location"
+Begin with sentry(cardNum) at 0 and add 1 to sentry on each pass until sentry is equal to 51
+(code to repeat)
+Create a variable called position with value of card location at position of the sentry
+Create a varibable called hand with the value of playerName array at position of the position variable
+Create a variable called cardName with value of function called getCardName with parameter of card number
+output the values of the sentry, cardName, and hand
+(End)
+output all
+
+Create a function called getCardName passing the values of card number
+Create a variable called suit with value of card number divided by 13 using integer division
+Create a variable called rank with value of card number mod 13
+Create a variable called cardName with the output of the value of rankname array at position rank and the value of suitname array at position suit
+return the value of cardName
+
+Create a function called assignCard passing the values of hand
+Create a variable called cardNum with a value of random integer between 0-51
+Initialize sentry with variable named KeepGoing as true then continue loop as long as condition is true. 
+(code to repeat)
+Create a variable called cardNum with a value of random integer between 0-51
+if card location is in the deck set condition variable to false
+(End)
+Assign that card to the hand
+
+Create a function called showHand passing the values of hand
+Output the text "Displaying playerName hand" with the value of playerName
+Begin with sentry(cardNum) at 0 and add 1 to sentry on each pass until sentry is equal to 51 
+(code to repeat)
+if card is in hand output the value of card (getCardName function)
+(End)
+output all

@@ -1,0 +1,61 @@
+Overview: 
+The program should ask for a purchase price and the amount of cash tendered.
+It should then determine how many coins or bills of the following denominations
+should be returned: 
+penny
+$0.01
+nickel
+$0.05
+dime
+$0.10
+quarter
+$0.25
+dollar
+$1.00
+five
+$5.00
+ten
+$10.00
+twenty
+$20.00
+
+Input:
+Inputs would include the price of an item and amount of cash avaliable.Both of these
+inputs would be float types due to currency having two decimal points
+
+Output:
+Outputs would be the change and amount of bills and/or coins. The change is needed to 
+determine the bills and/or coins. A successful run would determine the correct amount of
+change and then using the correct amount of change determine the correct amount of bills and/or
+coins.
+
+Procedure:
+Create a variable called Price of float type that asks the user the "Price of the Item" and stores the result
+Create a variable called Cash of float type that asks the user "Cash Tendered" and stores the result
+Create a variable called Change of float type rounded to two decimal points to determine the Change 
+by taking the Cash variable minus the Price variable
+Print Change and its value
+Multiple Change variable by 100 to convert to pennies and store it in Change variable
+Print Change in pennies and its value
+Print Twenties and value of Change divided by 2000 rounded to near integer (2000 pennies = $20)
+Store the remainder of the quotient in Change variable using mod operator
+Print Tens and value of Change divided by 1000 rounded to near integer (1000 pennies = $10)
+Store the remainder of the quotient in Change variable using mod operator
+Print Fives and value of Change divided by 500 rounded to near integer (500 pennies = $5)
+Store the remainder of the quotient in Change variable using mod operator
+Print Ones and value of Change divided by 100 rounded to near integer (100 pennies = $1)
+Store the remainder of the quotient in Change variable using mod operator
+Print Quarters and value of Change divided by 25 rounded to near integer (25 pennies = 1 quarter)
+Store the remainder of the quotient in Change variable using mod operator
+Print Dimes and value of Change divided by 10 rounded to near integer (10 pennies = 1 dime)
+Store the remainder of the quotient in Change variable using mod operator
+Print Nickles and value of Change divided by 5 rounded to near integer (5 pennies = 1 nickle)
+Store the remainder of the quotient in Change variable using mod operator
+Print Pennies and value of Change 
+
+ 
+ 
+ 
+ 
+ 
+ 

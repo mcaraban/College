@@ -1,0 +1,40 @@
+Overview:
+Write a program that will accept a phrase and convert it into code by substituting letters according to a key.
+
+Input:
+There will be three main inputs in this program. One being selecting a option which will come from the menu function. The next is when selecting encode,
+inputing a word to encode for the encoding function. Similarly, when selecting decode typing a word to decode for the decoding function. These last two 
+strings will be changed to upper case to deal with only one case. 
+
+Output: 
+The program should be able to produce an encryption of plain text and also be able decypher encrypted text. A successful run will be able to encrypt a 
+plain text and ,using the now encrypted word, decyper the word back to the original plain text.It will be easy to tell if something is wron gif it does 
+not return the same initial plain text. Also, if the encrpyted or decyphered text doesn't match to the key then something went wrong as well.
+
+Procedure:
+Create a function called menu without parameters that returns a response
+Within the function -
+output the text " Secret Decoder Menu 0) Quit 1) Encode 2) Decode "
+ask the user "What do you want to do" and store result in variable named response 
+
+Create a function called encode passing the value plain the returns a string
+Withing the function - 
+create a variable called code with initial value ""
+convert plain to upper case
+begin with sentry at value plain
+(code to repeat)
+create a variable called position that finds the character position in the alpha string
+create a variable called encode that is assigned the character in that position but from the key.
+create a variable called code that stores the character and adds it each time
+return the code
+
+Create a function called decode passing the value coded the returns a string
+Withing the function - 
+create a variable called code with initial value ""
+convert coded to upper case
+begin with sentry at value coded
+(code to repeat)
+create a variable called position that finds the character position in the key string
+create a variable called decode that is assigned the character in that position but from the alpha key.
+create a variable called decoded that stores the character and adds to it each time
+return the code
