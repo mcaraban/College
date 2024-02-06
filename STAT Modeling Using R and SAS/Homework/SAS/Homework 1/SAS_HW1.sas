@@ -1,0 +1,37 @@
+'1a'
+data Medicare;
+infile 'MedicareProvider.txt' dlm='09'x dsd obs=10;
+input NPI NPPES_CREDENTIALS $ NPPES_PROVIDER_GENDER $ NPPES_ENTITY_CODE
+$
+NPPES_PROVIDER_ZIP $ NPPES_PROVIDER_STATE $ PROVIDER_TYPE $
+MEDICARE_PARTICIPATION_INDICATOR $ PLACE_OF_SERVICE $ HCPCS_CODE $
+HCPCS_DRUG_INDICATOR $ LINE_SRVC_CNT BENE_UNIQUE_CNT
+BENE_DAY_SRVC_CNT
+AVERAGE_MEDICARE_ALLOWED_AMT STDEV_MEDICARE_ALLOWED_AMT
+AVERAGE_SUBMITTED_CHRG_AMT STDEV_SUBMITTED_CHRG_AMT
+AVERAGE_MEDICARE_PAYMENT_AMT
+STDEV_MEDICARE_PAYMENT_AMT;
+run;
+proc print data=Medicare;
+run;
+
+'1b'
+proc freq data=Medicare;
+tables NPPES_PROVIDER_GENDER*NPPES_PROVIDER_STATE / nopercent;
+run;
+
+'1c'
+proc sort data=work.medicare;
+by PROVIDER_TYPE;
+run;
+data providers;
+set Medicare;
+by PROVIDER_TYPE;
+if first.PROVIDER_TYPE then output;
+run;
+proc print data=providers;
+run;
+proc freq data=providers;
+tables NPPES_PROVIDER_GENDER*NPPES_PROVIDER_STATE / nopercent;
+run;
+
