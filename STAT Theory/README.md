@@ -1,4 +1,4 @@
-# STAT-I 417 – Statistical Theory
+# STAT-I 417 – Statistical Theory, Spring 2022
 An introduction to the mathematical theory of statistical inference, emphasizing inference for standard parametric families of distributions. Properties of estimators. Bayes and maximum likelihood estimation. Sufficient statistics. Properties of test of hypotheses. Most powerful and likelihood-ratio tests. Distribution theory for common statistics based on normal distributions.
 
 ## Project 1
