@@ -10,22 +10,20 @@ Children_Mortality=read_excel("children_mortality.xlsx")
 Population=read_excel("population.xlsx")
 
 #2
-# Function to extract the column name with country names
-my_func <- function(df, common_name = "Country") {
-  # Assuming the column with country names is the first column
-  country_column <- names(df)[1]
-  
-  # Assign a common name to the country column
-  df <- rename(df, !!common_name := !!country_column)
-  
-  return(country_column)
-}
+colnames(GDP)[1] = "Country"
+colnames(GDP)[1]
 
-my_func(GDP)
-my_func(Fertility)
-my_func(Life_Expectancy)
-my_func(Children_Mortality)
-my_func(Population)
+colnames(Fertility)[1] = "Country"
+colnames(Fertility)[1]
+
+colnames(Life_Expectancy)[1] = "Country"
+colnames(Life_Expectancy)[1]
+
+colnames(Children_Mortality)[1] = "Country"
+colnames(Children_Mortality)[1]
+
+colnames(Population)[1] = "Country"
+colnames(Population)[1]
 
 #3
 tidy_children_mortality <- gather(Children_Mortality, key = "Year", value = "ChildrenMortality", -Country)
